@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function TextForm() {
+export default function TextForm({mode}) {
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
@@ -35,23 +35,23 @@ export default function TextForm() {
 
     return (
     <>
-        <div className="mb-3">
+        <div className="mb-3" style={{color: mode==='dark'?'white':'black'}}>
             <h2>Enter the text to be analyzed here... </h2>
-            <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="9"></textarea>
+            <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: mode==='dark'?'#2c3238':'white', color: mode==='dark'?'white':'black'}} id="myBox" rows="9"></textarea>
             <button className='btn btn-primary my-3 mx-2' onClick={handleUpClick}>Convert to Uppercase</button>
             <button className='btn btn-primary my-3 mx-2' onClick={handleLowClick}>Convert to Lowercase</button>
             <button className='btn btn-primary my-3 mx-2' onClick={handleClear}>Clear Text</button>
             <button className='btn btn-primary my-3 mx-2' onClick={handleCopy}>Copy Text</button>
             <button className='btn btn-primary my-3 mx-2' onClick={handleExtraSpaces}>Remove Extra Spaces</button>
         </div>
-        <div className = "container">
+        <div className = "container" style={{color: mode==='dark'?'white':'black'}}>
             <h2>Text Summary</h2>
             <p>{text.split(" ").length } words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").length} Minutes read</p>
         </div>
-        <div className = "container">
+        <div className = "container" style={{color: mode==='dark'?'white':'black'}}>
             <h2>Preview</h2>
-            <p>{text}</p>
+            <p>{text.length>0?text:"Enter Somthing to preview it here"}</p>
         </div>
 
     </>
