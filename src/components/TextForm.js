@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function TextForm({mode}) {
+export default function TextForm({mode, showAlert}) {
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
@@ -8,27 +8,32 @@ export default function TextForm({mode}) {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        showAlert("Converted to UpperCase","success");
     }
 
     const handleLowClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        showAlert("Converted to LowerCase","success");
     }
 
     const handleClear = () => {
         let newText = "";
         setText(newText);
+        showAlert("Text Cleared","success");
     }
 
     const handleCopy = () => {
         let newText = document.getElementById("myBox");
         newText.select();
         navigator.clipboard.writeText(newText.value);
+        showAlert("Coppied to ClipBoard","success");
     }
 
     const handleExtraSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "))
+        showAlert("Removed Extra Spaces","success");
     }
 
     const [text, setText] = useState("");
