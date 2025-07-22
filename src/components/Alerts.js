@@ -9,7 +9,7 @@ export default function Alerts({alert}) {
 
   return (
     alert &&
-    <div class={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
+    <div className={`alert alert-${alert.type} alert-dismissible fade show`} role="alert">
     <strong>{capitalize(alert.type)}</strong>: {alert.message}
     </div>
     
